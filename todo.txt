@@ -1,0 +1,79 @@
+
+- dataset specify and acquire
+	X	~20-30 most popular books in high school
+	-	+ Newsgroup texts (or other gutengurg text)
+	X	title	year	lang	goodreads_rating	amazon_rating	number_goodreads num_amazon text
+	X	name format
+- statistics functions
+	X	length functions
+	X		word
+	X		sentence
+	X		syll
+	X		book
+	-		paragraph
+	-	variety functions
+			uniq
+			density
+			part of speech plot
+	-	readability formula
+- plots
+X	dists of sent lengths for all books
+-		try bokeh hover violin plot
+	scatter of complexity vs rating (size = num_readers)
+	scatter of complexity vs number readers
+- blog post
+	idea
+	explanation of graphics
+	any thoughts
+
+
+Design : 
+
+	{'title' : data_obj } 
+
+	- data
+		raw [1,2,2,1,...]
+		counts {1: 21, ...}
+		(downey stats object..)
+	
+		
+
+
+Decisions : 
+	plotting 
+		matplotlib, seafoam, plot.ly?
+		plot.ly interactive from matplotlib
+			http://nbviewer.ipython.org/github/plotly/python-user-guide/blob/master/s6_matplotlylib/s6_matplotlylib.ipynb
+		bokeh
+			violin plot http://bokeh.pydata.org/en/latest/docs/gallery/violin.html
+			hover tool http://bokeh.pydata.org/en/latest/docs/gallery/les_mis.html	
+		images...
+			http://stackoverflow.com/questions/22566284/matplotlib-how-to-plot-images-instead-of-points
+
+		inspiration
+		http://experiments.undercurrent.com/
+
+to track : 
+
+	action verb count density
+	adjective count density
+	
+	syllables   http://h6o6.com/2013/03/using-python-and-the-nltk-to-find-haikus-in-the-public-twitter-stream/
+	lengths
+		word
+		sentence
+		paragraph
+		chapter	
+	gunning-fog readability index
+	dialogue
+	proper name (main characters)
+		learn main chars by %proper names accounted for by including next one
+
+Metadata :
+	year
+	language
+
+Comparisons :
+	against 100 top books on gutenburg (classics)
+	25 good reads HS books https://www.goodreads.com/shelf/show/high-school
+	
