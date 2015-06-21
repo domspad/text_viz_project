@@ -1,4 +1,5 @@
- 
+import sys
+sys.path.append('/Users/dominicspadacene/Desktop/school_books/text_viz_project/')
 from datautils import load_book
 import texttools as tt
 
@@ -40,6 +41,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from bokeh import mpl
 from bokeh.plotting import show
+import pandas as pd
 
 # for the hover tool
 # from collections import OrderedDict
@@ -65,13 +67,15 @@ titles = ['Madame Bovary',
 			'Heart of Darkness',
 			'The Odyssey']
 
+title_data = {}
 for title in titles :
 	text = load_book(title)
-	data.append(tt.get_lengths(text,'sents','words'))
-data = np.array(data)
+	title_data[title] = pd.Series(tt.get_lengths(text,'sents','words'))
 
+data = title_data.items()
+data.sort(key=lambda x: x[1].median(), reverse=True)
 # And then just call the violinplot from Seaborn
-sns.violinplot(data, color="Set3", names=titles)
+sns.violinplot(zip(*data)[1], color="Set3", names=zip(*data)[0])
 
 plt.title("Seaborn violin plot in bokeh.")
 
