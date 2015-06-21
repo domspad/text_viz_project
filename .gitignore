@@ -1,0 +1,9 @@
+# unnecessary to track on github
+**/texts
+**/high_school_books.numbers
+**/high_school_books.xlsx
+**/todo.txt
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
