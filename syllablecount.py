@@ -141,3 +141,13 @@ def sylco(word) :
  
 	# calculate the output
 	return numVowels - disc + syls
+
+######################
+# Combined Syll count
+######################
+
+def sylco_com(word) :
+	try :
+		return nsyl(word)
+	except : 
+		return sylco(word)
