@@ -7,7 +7,7 @@ import nltk
 from nltk import word_tokenize #, pos_tag
 import nltk.data
 import string
-from syllablecount import sylco 
+from syllablecount import sylco, sylco_com
 from time import time
 import numpy as np
 
@@ -73,9 +73,9 @@ def get_lengths(text, unit='words', count_unit='chars') :
 			# counting syllables
 			if unit != 'words' :
 				subtokens = segment(token,'words')
-				sylcount = reduce(lambda agg,word : agg + sylco(word), subtokens, 0)
+				sylcount = reduce(lambda agg,word : agg + sylco_com(word), subtokens, 0)
 			else :
-				sylcount = sylco(token)
+				sylcount = sylco_com(token)
 
 			# appending value
 			counts.append(sylcount)
@@ -115,8 +115,9 @@ def flesch_reading_ease(text) :
 	see https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests
 	"""
 
-	sylls = get_lengths(text,'book','syll')
+	sylls = get_lengths(text,'book','sylls')
 	words = get_lengths(text,'book','words')
 	sents = get_lengths(text,'book','sents')
-
-	return 206.835 - 1.015 * (words / sents) - 84.6 * (sylls / words)
+	print ("words / sent {}\nsylls / word {}".format(words/sents, sylls/words))
+	print("sylls {}\n words {}\n sents {}".format(sylls, words, sents))
+	return (206.835 - 1.015 * (words / sents) - 84.6 * (sylls / words))[0]
